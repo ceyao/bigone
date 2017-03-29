@@ -5,62 +5,26 @@
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <title>dealmoon</title>
+    <title>共有对象和私有变量，this 指向当前（将要被创建的）对象中的 公有属性</title>
     <link rel="stylesheet" href="css/base.css">
     <script>
-        // Setup
-        var contacts = [
-            {
-                "firstName": "Akira",
-                "lastName": "Laine",
-                "number": "0543236543",
-                "likes": ["Pizza", "Coding", "Brownie Points"]
-            },
-            {
-                "firstName": "Harry",
-                "lastName": "Potter",
-                "number": "0994372684",
-                "likes": ["Hogwarts", "Magic", "Hagrid"]
-            },
-            {
-                "firstName": "Sherlock",
-                "lastName": "Holmes",
-                "number": "0487345643",
-                "likes": ["Intriguing Cases", "Violin"]
-            },
-            {
-                "firstName": "Kristian",
-                "lastName": "Vos",
-                "number": "unknown",
-                "likes": ["Javascript", "Gaming", "Foxes"]
-            }
-        ];
+        var Bike = function() {
+            // this is a private variable
+            var gear = 10;
 
-        function lookUp(firstName,prop){
-// Only change code below this line
-            for (var i = 0; i < contacts.length; i++) {
-                var confn = contacts[i].firstName;
-                if (confn == firstName) {
-                    console.log(confn);
-                    var propValueTrue = contacts[i].hasOwnProperty(prop);
-                    if (propValueTrue) {
-                        var propValue = contacts[i][prop];
-                        console.log(propValue);
-                    } else {
-                        console.log( "No such property");
-                    }
-                }
+            // these are public methods
+            this.setGear = function(change) {
+                gear = change;
+            };
 
-            }
-            console.log("No such contact");  // 这一行放到 for 循环外面,这个没有找到contact的条件，不能放在for里面，是for循环之后还没有找到，才会返回没有contact，对吧
+            this.getGear = function() {
+                return gear;
+            };
+        };
 
-// Only change code above this line
-        }
 
-        // Change these values to test your function
-        lookUp("Kristian", "likes");
-
-        
+        var myBike = new Bike();
+        myBike.setGear(4);
     </script>
 </head>
 <body>

@@ -4,35 +4,41 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>实现一个摧毁(destroyer)函数，第一个参数是待摧毁的数组，其余的参数是待摧毁的值。</title>
+    <script src="js/jquery-3.1.1.min.js"></script>
     <script>
-        function destroyer(arr) {
-            // Remove all the values
-            var narr=[];
+        $(document).ready(function() {
 
-            for(var i=0;i<arguments.length;i++){
-                narr.push(arguments[i]);
-                //console.log("每个元素："+arguments[i]+"["+i+"]");
-            }
-            narr = arr.filter(function(element, index, array){
-                console.log("item:"+element);
-                console.log( narr.indexOf(element) ===-1); //从narr中选出在arr中找不到的元素
+            $("#getMessage").on("click", function(){
+                // Only change code below this line.
+
+                $.getJSON("json/cat.json",function(json){
+                    $(".message").html(JSON.stringify(json));
+                });
+
+                // Only change code above this line.
             });
 
-//
-
-//            console.log(narr);
-            //return narr;
-            //var nfilter=arr.filter(function(val){
-
-            //});
-            //return arr;
-        }
-
-        destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+        });
     </script>
 </head>
 <body>
-
+<div class="container-fluid">
+    <div class = "row text-center">
+        <h2>Cat Photo Finder</h2>
+    </div>
+    <div class = "row text-center">
+        <div class = "col-xs-12 well message">
+            The message will go here
+        </div>
+    </div>
+    <div class = "row text-center">
+        <div class = "col-xs-12">
+            <button id = "getMessage" class = "btn btn-primary">
+                Get Message
+            </button>
+        </div>
+    </div>
+</div>
 
 
 </body>

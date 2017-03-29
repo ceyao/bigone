@@ -2,7 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>替换所有标点符号和字符，判断回文</title>
+    <script>
+        function palindrome(str) {
+            // Good luck!
+            var text=str.replace(/\s/g,'').replace(/[\,\.\\\/\-\_\:\)\(]/g,'').toLowerCase();
+            var text2=text.split('').reverse().join('');
+            if(text2==text){
+                console.log("true:"+text2);
+                //return true;
+            }else{
+                console.log("false:"+text2);
+                //return false;
+            }
+        }
+        palindrome("0_0 (: /-\ :) 0-0");
+    </script>
 </head>
 <body>
 
