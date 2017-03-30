@@ -7,17 +7,24 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <script>
         $(document).ready(function() {
+            $("#getMessage").on("click", function() {
+                $.getJSON("json/cat.json", function(json) {
+                    var html = "";
+                    // Only change code below this line.
+                    json.forEach(function(val){
+                        var keys=Object.keys(val);
+                        html+="<div>";
+                        keys.forEach(function(key){
+                            html+="<b>"+key+"</b>:"+val[key]+"<br>";
+                        });
+                        html+="</div>"
+                    });
 
-            $("#getMessage").on("click", function(){
-                // Only change code below this line.
+                    // Only change code above this line.
+                    $(".message").html(html);
 
-                $.getJSON("json/cat.json",function(json){
-                    $(".message").html(JSON.stringify(json));
                 });
-
-                // Only change code above this line.
             });
-
         });
     </script>
 </head>
